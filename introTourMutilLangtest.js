@@ -223,7 +223,7 @@ function updateHelperCSS() {
         }
         
       ],
-      dontShowAgain:true,
+    
     }).start();
     observeHelperLayer();
   }
