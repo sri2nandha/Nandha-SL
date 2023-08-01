@@ -187,7 +187,12 @@ function updateHelperCSS() {
           element: '#next',
           intro: translations['next'][language],
           title: translations['titles'][language]['next'],
-        }
+        },
+        {
+            element: '#play-pause',
+            intro: translations['next'][language],
+            title: translations['titles'][language]['next'],
+          }
         
       ],
     }).start();
@@ -350,12 +355,8 @@ function updateHelperCSS() {
           element: '#next',
           intro: translations['next'][language],
           title: translations['titles'][language]['next'],
-        },
-        {
-            element: '#play-pause',
-            intro: translations['next'][language],
-            title: translations['titles'][language]['next'],
-          }
+        }
+        
         
       ],
     }).start();
