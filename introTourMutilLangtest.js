@@ -48,16 +48,16 @@ function updateHelperCSS() {
         mandarin: '在这里，您可以找到与课程相关的有用资源。点击链接访问额外的材料或参考资料。',
         portuguese: 'Aqui você pode encontrar recursos úteis relacionados ao curso. Clique nos links para acessar materiais adicionais ou referências.'
       },
-      transcript: {
-        english: 'Here you can find helpful resources related to the course. Click on the links to access additional materials or references.',
-        arabic: 'هنا يمكنك العثور على موارد مفيدة تتعلق بالدورة. انقر على الروابط للوصول إلى مواد إضافية أو مراجع.',
-        urdu: 'یہاں آپ کورس سے متعلق مددگار وسائل تلاش کر سکتے ہیں. اضافی مواد یا حوالے تک رسائی حاصل کرنے کے لئے لنکس پر کلک کریں.',
-        dutch: 'Hier vind je nuttige bronnen gerelateerd aan de cursus. Klik op de links om extra materiaal of referenties te openen.',
-        spanish: 'Aquí puedes encontrar recursos útiles relacionados con el curso. Haz clic en los enlaces para acceder a materiales adicionales o referencias.',
-        french: 'Ici, vous pouvez trouver des ressources utiles liées au cours. Cliquez sur les liens pour accéder à des matériaux supplémentaires ou des références.',
-        mandarin: '在这里，您可以找到与课程相关的有用资源。点击链接访问额外的材料或参考资料。',
-        portuguese: 'Aqui você pode encontrar recursos úteis relacionados ao curso. Clique nos links para acessar materiais adicionais ou referências.'
-      },
+    //   transcript: {
+    //     english: 'Here you can find helpful resources related to the course. Click on the links to access additional materials or references.',
+    //     arabic: 'هنا يمكنك العثور على موارد مفيدة تتعلق بالدورة. انقر على الروابط للوصول إلى مواد إضافية أو مراجع.',
+    //     urdu: 'یہاں آپ کورس سے متعلق مددگار وسائل تلاش کر سکتے ہیں. اضافی مواد یا حوالے تک رسائی حاصل کرنے کے لئے لنکس پر کلک کریں.',
+    //     dutch: 'Hier vind je nuttige bronnen gerelateerd aan de cursus. Klik op de links om extra materiaal of referenties te openen.',
+    //     spanish: 'Aquí puedes encontrar recursos útiles relacionados con el curso. Haz clic en los enlaces para acceder a materiales adicionales o referencias.',
+    //     french: 'Ici, vous pouvez trouver des ressources utiles liées au cours. Cliquez sur les liens pour accéder à des matériaux supplémentaires ou des références.',
+    //     mandarin: '在这里，您可以找到与课程相关的有用资源。点击链接访问额外的材料或参考资料。',
+    //     portuguese: 'Aqui você pode encontrar recursos úteis relacionados ao curso. Clique nos links para acessar materiais adicionais ou referências.'
+    //   },
       menu: {
         english: 'The course menu is located here. It provides an overview of the course structure and allows you to jump to specific sections or modules.',
         arabic: 'يقع قائمة الدورة هنا. يوفر نظرة عامة على هيكل الدورة ويتيح لك الانتقال إلى أقسام أو وحدات محددة.',
@@ -78,16 +78,16 @@ function updateHelperCSS() {
         mandarin: '这些控件允许您播放或暂停幻灯片播放。您可以根据自己的偏好控制课程内容的节奏。',
         portuguese: 'Esses controles permitem que você reproduza ou pause a reprodução dos slides. Você pode controlar o ritmo do conteúdo do curso com base em suas preferências.'
       },
-      play: {
-        english: 'These controls allow you to play or pause the slide playback. You can control the pace of the course content based on your preferences.',
-        arabic: 'تتيح لك هذه المراقبات تشغيل أو إيقاف تشغيل تشغيل الشرائح. يمكنك التحكم في وتيرة محتوى الدورة بناءً على تفضيلاتك.',
-        urdu: 'یہ کنٹرولز آپ کو اسلائیڈ پلے بیک کو چلانے یا روکنے کی اجازت دیتے ہیں. آپ اپنی ترجیحات کے مطابق کورس مواد کی رفتار کو کنٹرول کرسکتے ہیں.',
-        dutch: 'Met deze bedieningselementen kun je de diavoorstelling afspelen of pauzeren. Je kunt de snelheid van de cursusinhoud naar wens regelen.',
-        spanish: 'Estos controles te permiten reproducir o pausar la reproducción de diapositivas. Puedes controlar el ritmo del contenido del curso según tus preferencias.',
-        french: 'Ces commandes vous permettent de lire ou de mettre en pause la lecture des diapositives. Vous pouvez contrôler le rythme du contenu du cours en fonction de vos préférences.',
-        mandarin: '这些控件允许您播放或暂停幻灯片播放。您可以根据自己的偏好控制课程内容的节奏。',
-        portuguese: 'Esses controles permitem que você reproduza ou pause a reprodução dos slides. Você pode controlar o ritmo do conteúdo do curso com base em suas preferências.'
-      },
+    //   play: {
+    //     english: 'These controls allow you to play or pause the slide playback. You can control the pace of the course content based on your preferences.',
+    //     arabic: 'تتيح لك هذه المراقبات تشغيل أو إيقاف تشغيل تشغيل الشرائح. يمكنك التحكم في وتيرة محتوى الدورة بناءً على تفضيلاتك.',
+    //     urdu: 'یہ کنٹرولز آپ کو اسلائیڈ پلے بیک کو چلانے یا روکنے کی اجازت دیتے ہیں. آپ اپنی ترجیحات کے مطابق کورس مواد کی رفتار کو کنٹرول کرسکتے ہیں.',
+    //     dutch: 'Met deze bedieningselementen kun je de diavoorstelling afspelen of pauzeren. Je kunt de snelheid van de cursusinhoud naar wens regelen.',
+    //     spanish: 'Estos controles te permiten reproducir o pausar la reproducción de diapositivas. Puedes controlar el ritmo del contenido del curso según tus preferencias.',
+    //     french: 'Ces commandes vous permettent de lire ou de mettre en pause la lecture des diapositives. Vous pouvez contrôler le rythme du contenu du cours en fonction de vos préférences.',
+    //     mandarin: '这些控件允许您播放或暂停幻灯片播放。您可以根据自己的偏好控制课程内容的节奏。',
+    //     portuguese: 'Esses controles permitem que você reproduza ou pause a reprodução dos slides. Você pode controlar o ritmo do conteúdo do curso com base em suas preferências.'
+    //   },
       next: {
         english: 'To move to the next slide, click the "Next" button. It will take you to the next topic or module in the course.',
         arabic: 'للانتقال إلى الشريحة التالية، انقر على زر "التالي". سوف ينقلك إلى الموضوع أو الوحدة التالية في الدورة.',
@@ -111,7 +111,7 @@ function updateHelperCSS() {
       titles: {
         english: {
           slide: 'Slide',
-          transcript: 'transcript',
+        //   transcript: 'transcript',
           resources: 'Helpful Resources',
           menu: 'Course Menu',
           playback: 'Slide Playback Control',
@@ -190,11 +190,11 @@ function updateHelperCSS() {
           intro: translations['resources'][language],
           title: translations['titles'][language]['resources'],
         },
-        {
-            element: '.cs-transcript',
-            intro: translations['transcript'][language],
-            title: translations['titles'][language]['transcript'],
-          },
+        // {
+        //     element: '.cs-transcript',
+        //     intro: translations['transcript'][language],
+        //     title: translations['titles'][language]['transcript'],
+        //   },
         {
           element: '#outline-content',
           intro: translations['menu'][language],
@@ -205,11 +205,11 @@ function updateHelperCSS() {
           intro: translations['playback'][language],
           title: translations['titles'][language]['playback'],
         },
-        {
-            element: '#play-pause',
-            intro: translations['play'][language],
-            title: translations['titles'][language]['play'],
-          },
+        // {
+        //     element: '#play-pause',
+        //     intro: translations['play'][language],
+        //     title: translations['titles'][language]['play'],
+        //   },
         
         {
           element: '#prev',
@@ -223,7 +223,6 @@ function updateHelperCSS() {
         }
         
       ],
-    
     }).start();
     observeHelperLayer();
   }
