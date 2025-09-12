@@ -12,6 +12,7 @@ var css = `
   height: 250px;
   border: 2px solid #000;
   overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   pointer-events: none;
   z-index: 1000;
   background: #fff no-repeat;
