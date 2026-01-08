@@ -1,111 +1,131 @@
+/***********************
+ * NkMagnifier v1.3
+ * Storyline 360 Safe
+ ***********************/
+
+/* ---------- CSS ---------- */
 function addCssToHead(cssRules) {
-  var styleElement = document.createElement('style');
+  const styleElement = document.createElement('style');
   styleElement.textContent = cssRules;
   document.head.appendChild(styleElement);
 }
 
-var css = `
-#magnifier {
-  position: absolute;
-  display: none;
-  width: 250px;
-  height: 250px;
-  border: 2px solid #000;
-  overflow: hidden;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  pointer-events: none;
-  z-index: 1000;
-  background: #fff no-repeat;
-  cursor: none;
-} `;
+addCssToHead(`
+  #magnifier {
+    position: fixed;
+    display: none;
+    width: 250px;
+    height: 250px;
+    border: 2px solid #000;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0,0,0,0.25);
+    pointer-events: none;
+    z-index: 999999;
+    background: #fff no-repeat;
+  }
+`);
 
-addCssToHead(css);
+/* ---------- MAIN FUNCTION ---------- */
+function nklMagnify(imageAccText, zoomLevel = 3, magnifierSize = 250, borderRadius = 0) {
 
-function nklMagnify(image_, zoomLevel = 4, magnifierSize = 250, borderRadius = 0) {
-  const magnifier = document.createElement('div');
-  magnifier.id = 'magnifier';
-  document.body.appendChild(magnifier);
+  let magnifier = document.getElementById('magnifier');
+  if (!magnifier) {
+    magnifier = document.createElement('div');
+    magnifier.id = 'magnifier';
+    document.body.appendChild(magnifier);
+  }
 
-  let targetElement;
+  let targetElement = null;
+  let imageWidth = 0;
+  let imageHeight = 0;
 
-  document.addEventListener('mousemove', (event) => {
-    if (targetElement) {
-      updateMagnifierPosition(event.pageX, event.pageY);
-    }
+  /* ---------- EVENTS ---------- */
+  document.addEventListener('mousemove', e => {
+    if (targetElement) updateMagnifierPosition(e.clientX, e.clientY);
   });
 
-  document.addEventListener('touchmove', (event) => {
-    if (targetElement) {
-      const touch = event.touches[0];
-      updateMagnifierPosition(touch.pageX, touch.pageY);
-      event.preventDefault();
-    }
+  document.addEventListener('touchmove', e => {
+    if (!targetElement) return;
+    const t = e.touches[0];
+    updateMagnifierPosition(t.clientX, t.clientY);
+    e.preventDefault();
   }, { passive: false });
 
-  document.querySelectorAll(`[data-acc-text='${image_}']`).forEach(element => {
-    element.addEventListener('mouseenter', startMagnifierEvent);
-    element.addEventListener('mouseleave', stopMagnifier);
-    element.addEventListener('touchstart', startMagnifierEvent, { passive: true });
-    element.addEventListener('touchend', stopMagnifier);
-  });
+  document
+    .querySelectorAll(`[data-acc-text='${imageAccText}']`)
+    .forEach(el => {
+      el.addEventListener('mouseenter', startMagnifierEvent);
+      el.addEventListener('mouseleave', stopMagnifier);
+      el.addEventListener('touchstart', startMagnifierEvent, { passive: true });
+      el.addEventListener('touchend', stopMagnifier);
+    });
 
-  function startMagnifierEvent(event) {
-    if (event.type === 'touchstart') {
-      const touch = event.touches[0];
-      updateMagnifierPosition(touch.pageX, touch.pageY);
-    }
+  /* ---------- START ---------- */
+  function startMagnifierEvent(e) {
     targetElement = this;
-    startMagnifier(targetElement);
-  }
 
-  function startMagnifier(element) {
-    const image = element.querySelector('svg image');
-    if (image) {
-      const imagePath = image.getAttribute('xlink:href') || image.getAttribute('href');
-      magnifier.style.backgroundImage = `url('${imagePath}')`;
-      magnifier.style.display = 'block';
-      magnifier.style.width = `${magnifierSize}px`;
-      magnifier.style.height = `${magnifierSize}px`;
-      magnifier.style.borderRadius = borderRadius === 'circle' ? '50%' : `${borderRadius}px`;
-      magnifier.style.backgroundRepeat = 'no-repeat';
-      magnifier.style.backgroundSize = `${element.offsetWidth * zoomLevel}px ${element.offsetHeight * zoomLevel}px`;
-      document.body.style.cursor = 'none';
-    } else {
-      console.error("Image not found within the specified element.");
+    const img = targetElement.querySelector('svg image');
+    if (!img) {
+      console.error('Magnifier: image not found');
+      return;
+    }
+
+    const imgSrc =
+      img.getAttribute('href') ||
+      img.getAttribute('xlink:href');
+
+    imageWidth = targetElement.offsetWidth;
+    imageHeight = targetElement.offsetHeight;
+
+    magnifier.style.display = 'block';
+    magnifier.style.width = magnifierSize + 'px';
+    magnifier.style.height = magnifierSize + 'px';
+    magnifier.style.borderRadius =
+      borderRadius === 'circle' ? '50%' : borderRadius + 'px';
+
+    magnifier.style.backgroundImage = `url('${imgSrc}')`;
+    magnifier.style.backgroundRepeat = 'no-repeat';
+    magnifier.style.backgroundSize =
+      imageWidth * zoomLevel + 'px ' +
+      imageHeight * zoomLevel + 'px';
+
+    document.body.style.cursor = 'none';
+
+    if (e.type === 'touchstart') {
+      const t = e.touches[0];
+      updateMagnifierPosition(t.clientX, t.clientY);
     }
   }
 
+  /* ---------- STOP ---------- */
   function stopMagnifier() {
     targetElement = null;
     magnifier.style.display = 'none';
     document.body.style.cursor = 'auto';
   }
 
+  /* ---------- POSITION + CLAMP ---------- */
   function updateMagnifierPosition(clientX, clientY) {
-  if (!targetElement) return;
+    if (!targetElement) return;
 
-  const rect = targetElement.getBoundingClientRect();
+    const rect = targetElement.getBoundingClientRect();
 
-  // Magnifier position (viewport-based)
-  let left = clientX - magnifierSize / 2;
-  let top  = clientY - magnifierSize / 2;
+    // Magnifier follows cursor
+    magnifier.style.left = clientX - magnifierSize / 2 + 'px';
+    magnifier.style.top  = clientY - magnifierSize / 2 + 'px';
 
-  magnifier.style.left = `${left}px`;
-  magnifier.style.top  = `${top}px`;
+    // Cursor relative to image
+    let x = clientX - rect.left;
+    let y = clientY - rect.top;
 
-  // Mouse position relative to image
-  let x = clientX - rect.left;
-  let y = clientY - rect.top;
+    // Clamp inside image (CRITICAL FIX)
+    x = Math.max(0, Math.min(x, rect.width));
+    y = Math.max(0, Math.min(y, rect.height));
 
-  // Clamp inside image
-  x = Math.max(0, Math.min(x, rect.width));
-  y = Math.max(0, Math.min(y, rect.height));
+    // Background position
+    const bgX = -(x * zoomLevel - magnifierSize / 2);
+    const bgY = -(y * zoomLevel - magnifierSize / 2);
 
-  // Background position
-  const bgX = -(x * zoomLevel - magnifierSize / 2);
-  const bgY = -(y * zoomLevel - magnifierSize / 2);
-
-  magnifier.style.backgroundPosition = `${bgX}px ${bgY}px`;
-}
-
+    magnifier.style.backgroundPosition = `${bgX}px ${bgY}px`;
+  }
 }
